@@ -16,7 +16,6 @@ int main(void) {
     int chute;
     int maior = 0;
     int acertou = 0;
-    printf("%d\n", chute);
 
     for(int i = 1; i <= NUMERO_TENTATIVAS;  i++) {
 
@@ -24,6 +23,13 @@ int main(void) {
         scanf("%d", &chute);
         acertou = chute == numero_secreto;
         maior = chute > numero_secreto;
+
+        if(chute < 0) {
+            i--;
+            printf("Valor inválido: Número negativo\nEntre com um valor válido :D\n");
+            printf("Você ainda tem %d tentativas.\n", NUMERO_TENTATIVAS - i);
+            continue;
+        }
 
         if(acertou) { // substituição da comparação aqui para comparar e colocar seu valor numa variável mais legível
             printf("Parabéns! Você acertou!\n");
