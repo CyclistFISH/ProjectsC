@@ -14,10 +14,11 @@ int main(void) {
 
     int numero_secreto = 42;
     int chute;
+    int tentativas = 1;
     int maior = 0;
     int acertou = 0;
 
-    for(int i = 1; i <= NUMERO_TENTATIVAS;  i++) {
+    while(!acertou) {
 
         printf("Qual é o seu chute?: ");
         scanf("%d", &chute);
@@ -25,22 +26,23 @@ int main(void) {
         maior = chute > numero_secreto;
 
         if(chute < 0) {
-            i--;
-            printf("Valor inválido: Número negativo\nEntre com um valor válido :D\n");
-            printf("Você ainda tem %d tentativas.\n", NUMERO_TENTATIVAS - i);
+            printf("-----------------------------------------------------------------\n"); 
+            printf("Valor inválido: Número Negativo >:(\n");
+            printf("Não aceitamos negatividade por aqui. Tente novamente! E dessa vez, \n"); 
+            printf("\n*************\nCERTIFIQUE-SE\n*************\n\nde ser positivo.\n");
+            printf("-----------------------------------------------------------------\n"); 
             continue;
         }
-
-        if(acertou) { // substituição da comparação aqui para comparar e colocar seu valor numa variável mais legível
-            printf("Parabéns! Você acertou!\n");
-            break;
-        } else if(maior) {
-            printf("Seu chute foi maior do que o número secreto!\n");
-            printf("Você tem %d tentativas restantes.\n", NUMERO_TENTATIVAS - i);
+        	
+        if(acertou) {
+            printf("Parabéns! Você acertou na sua %da tentativa!\n", tentativas);
+        } else if (maior) {
+            printf("Seu chute foi maior que o número secreto!\n");
         } else {
-            printf("Seu chute foi menor do que o número secreto!\n");
-            printf("Você tem %d tentativas restantes.\n", NUMERO_TENTATIVAS - i);
+            printf("Seu chute foi menor que o número secreto!\n");
         }
+        
+        tentativas++;
     }
     printf("Fim de jogo! ");
 }
