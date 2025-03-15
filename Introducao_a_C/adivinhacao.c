@@ -18,7 +18,7 @@ int main(void) {
     int maior = 0;
     int acertou = 0;
 
-    while(!acertou) {
+    while(1) {
 
         printf("Qual é o seu chute?: ");
         scanf("%d", &chute);
@@ -36,12 +36,13 @@ int main(void) {
         	
         if(acertou) {
             printf("Parabéns! Você acertou na sua %da tentativa!\n", tentativas);
+            break;
         } else if (maior) {
             printf("Seu chute foi maior que o número secreto!\n");
         } else {
             printf("Seu chute foi menor que o número secreto!\n");
         }
-        
+
         tentativas++;
     }
     printf("Fim de jogo! ");
